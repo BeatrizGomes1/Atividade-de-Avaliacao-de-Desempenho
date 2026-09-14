@@ -1,4 +1,3 @@
-```python
 from line_solver import *
 
 # Dados iniciais
