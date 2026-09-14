@@ -1,5 +1,7 @@
+```python
 from line_solver import *
 
+# Dados iniciais
 taxa = 30
 tempo = 0.020
 
@@ -26,9 +28,6 @@ for variacao in variacoes:
     classe = OpenClass(modelo, "Transacoes")
 
     fonte.set_arrival(classe, Exp(chegada))
-
-    # Exp recebe a taxa de serviço
-    # tempo médio = 0.020 s → taxa = 1 / 0.020 = 50
     cpu.set_service(classe, Exp(1 / tempo))
 
     modelo.link(Network.serial_routing(fonte, cpu, saida))
@@ -61,8 +60,6 @@ for variacao in variacoes:
     classe = OpenClass(modelo, "Transacoes")
 
     fonte.set_arrival(classe, Exp(taxa))
-
-    # LINE recebe a taxa, então usamos 1 / novo_tempo
     cpu.set_service(classe, Exp(1 / novo_tempo))
 
     modelo.link(Network.serial_routing(fonte, cpu, saida))
@@ -70,3 +67,4 @@ for variacao in variacoes:
     resultado = MVA(modelo)
 
     print(resultado.avg_table())
+```
